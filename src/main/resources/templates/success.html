@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Payment Successful</title>
+</head>
+<body>
+<h1>Payment Successful!</h1>
+
+<div th:if="${order != null}">
+    <p>Order ID: <span th:text="${order.id}"></span></p>
+    <p>Status: <span th:text="${order.paymentStatus}"></span></p>
+
+    <ul>
+        <li th:each="item : ${order.items}">
+            <span th:text="${item.product.name}"></span> -
+            Quantity: <span th:text="${item.quantity}"></span> -
+            Price: $<span th:text="${item.unitPrice}"></span>
+        </li>
+    </ul>
+
+    <p>Total: $<span th:text="${order.totalPrice}"></span></p>
+</div>
+
+<div th:if="${order == null}">
+    <p>Order not found.</p>
+</div>
+</body>
+</html>
